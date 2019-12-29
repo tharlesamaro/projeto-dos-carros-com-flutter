@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
               nextFocus: _focusSenha,
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             AppTextFormField(
               "Senha",
