@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   final _controllerLogin = TextEditingController();
+
   final _controllerSenha = TextEditingController();
+
+  final _focusSenha = FocusNode();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +43,9 @@ class LoginPage extends StatelessWidget {
               "Digite o login",
               controller: _controllerLogin,
               validator: _validateLogin,
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              nextFocus: _focusSenha,
             ),
             SizedBox(
               height: 10,
@@ -39,6 +56,8 @@ class LoginPage extends StatelessWidget {
               isPassword: true,
               controller: _controllerSenha,
               validator: _validateSenha,
+              keyboardType: TextInputType.number,
+              focusNode: _focusSenha,
             ),
             SizedBox(
               height: 20,
@@ -56,11 +75,24 @@ class LoginPage extends StatelessWidget {
     bool isPassword = false,
     TextEditingController controller,
     FormFieldValidator<String> validator,
+    TextInputType keyboardType,
+    TextInputAction textInputAction,
+    FocusNode focusNode,
+    FocusNode nextFocus,
   }) {
     return TextFormField(
       controller: controller,
       obscureText: isPassword,
       validator: validator,
+      keyboardType: keyboardType,
+      keyboardAppearance: Brightness.light,
+      textInputAction: textInputAction,
+      focusNode: focusNode,
+      onFieldSubmitted: (String value) {
+        if (nextFocus != null) {
+          FocusScope.of(context).requestFocus(nextFocus);
+        }
+      },
       style: TextStyle(
         fontSize: 25,
         color: Colors.blue,
@@ -97,7 +129,7 @@ class LoginPage extends StatelessWidget {
   }
 
   void _onClickLogin() {
-    bool formValidationContainsErrors = ! _formKey.currentState.validate();
+    bool formValidationContainsErrors = !_formKey.currentState.validate();
 
     if (formValidationContainsErrors) {
       return;
@@ -126,5 +158,11 @@ class LoginPage extends StatelessWidget {
     }
 
     return null;
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 }
