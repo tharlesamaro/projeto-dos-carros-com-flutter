@@ -1,4 +1,5 @@
 import 'package:carros/pages/home_page.dart';
+import 'package:carros/pages/login_api.dart';
 import 'package:carros/utils/navigator.dart';
 import 'package:carros/widgets/app_button.dart';
 import 'package:carros/widgets/app_text_form_field.dart';
@@ -73,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _onClickLogin() {
+  void _onClickLogin() async {
     bool formValidationContainsErrors = !_formKey.currentState.validate();
 
     if (formValidationContainsErrors) {
@@ -83,7 +84,13 @@ class _LoginPageState extends State<LoginPage> {
     String login = _controllerLogin.text;
     String senha = _controllerSenha.text;
 
-    push(context, HomePage());
+    bool loginSuccess = await LoginApi.login(login, senha);
+
+    if (loginSuccess) {
+      push(context, HomePage());
+    }
+
+
   }
 
   String _validateLogin(String value) {
