@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
 
   _body() {
     return Container(
-      color: Colors.white,
+
     );
   }
 }
