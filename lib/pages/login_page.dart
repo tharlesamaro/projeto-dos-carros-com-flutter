@@ -19,6 +19,8 @@ class _LoginPageState extends State<LoginPage> {
   final _controllerSenha = TextEditingController();
   final _focusSenha = FocusNode();
 
+  bool _showProgress = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -70,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
             AppButton(
               "Login",
               onPressed: _onClickLogin,
+              showProgress: _showProgress,
             ),
           ],
         ),
