@@ -21,6 +21,19 @@ class HomePage extends StatelessWidget {
     return FutureBuilder(
       future: future,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasError) {
+          print(snapshot.error);
+          return Center(
+            child: Text(
+              "Não foi possível listar os carros",
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 22,
+              ),
+            ),
+          );
+        }
+
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(),
