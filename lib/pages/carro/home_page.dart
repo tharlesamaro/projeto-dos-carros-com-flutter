@@ -18,30 +18,58 @@ class HomePage extends StatelessWidget {
   _body() {
     List<Carro> carros = CarrosApi.getCarros();
 
-    return ListView.builder(
-      itemCount: carros.length,
-      itemBuilder: (context, index) {
-        Carro carro = carros[index];
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: ListView.builder(
+        itemCount: carros.length,
+        itemBuilder: (context, index) {
+          Carro carro = carros[index];
 
-        return Row(
-          children: <Widget>[
-            Image.network(
-              carro.urlFoto,
-              width: 150,
-            ),
-            Flexible(
-              child: Text(
-                carro.nome,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 25,
-                ),
+          return Card(
+            color: Colors.grey[100],
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Center(
+                    child: Image.network(
+                      carro.urlFoto,
+                      width: 250,
+                    ),
+                  ),
+                  Text(
+                    carro.nome,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                  ),
+                  Text(
+                    "descrição...",
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  ButtonBar(
+                    children: <Widget>[
+                      FlatButton(
+                        child: const Text('DETALHES'),
+                        onPressed: () { /* ... */ },
+                      ),
+                      FlatButton(
+                        child: const Text('SHARE'),
+                        onPressed: () { /* ... */ },
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-          ],
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
