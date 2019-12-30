@@ -105,8 +105,8 @@ class _LoginPageState extends State<LoginPage> {
       return "Campo senha é obrigatório";
     }
 
-    if (value.length < 4) {
-      return "Digite pelo menos 4 caracteres";
+    if (value.length < 1) {
+      return "Digite pelo menos 1 caracteres";
     }
 
     return null;
