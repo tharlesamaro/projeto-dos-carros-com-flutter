@@ -1,8 +1,10 @@
 import 'package:carros/pages/carro/carro.dart';
 
 class CarrosApi {
-  static List<Carro> getCarros() {
+  static Future<List<Carro>> getCarros() async {
     final carros = List<Carro>();
+
+    await Future.delayed(Duration(seconds: 4));
 
     carros.add(
       Carro(
