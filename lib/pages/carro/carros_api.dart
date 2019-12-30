@@ -13,13 +13,6 @@ class CarrosApi {
 
     List list = convert.json.decode(json);
 
-    final carros = List<Carro>();
-
-    for(Map map in list) {
-      Carro carro = Carro.fromJson(map);
-      carros.add(carro);
-    }
-
-    return carros;
+    return list.map<Carro>((map) => Carro.fromJson(map)).toList();
   }
 }
