@@ -87,6 +87,10 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
+    setState(() {
+      _showProgress = true;
+    });
+
     String login = _controllerLogin.text;
     String senha = _controllerSenha.text;
 
@@ -99,6 +103,10 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       alert(context, response.message);
     }
+
+    setState(() {
+      _showProgress = false;
+    });
   }
 
   String _validateLogin(String value) {
