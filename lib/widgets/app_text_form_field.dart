@@ -43,9 +43,9 @@ class AppTextFormField extends StatelessWidget {
         color: Colors.blue,
       ),
       decoration: InputDecoration(
-        border: OutlineInputBorder(
+        /*border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-        ),
+        ),*/
         labelText: label,
         labelStyle: TextStyle(
           fontSize: 25,
