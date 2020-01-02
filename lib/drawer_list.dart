@@ -62,6 +62,7 @@ class DrawerList extends StatelessWidget {
   }
 
   _onCLickLogout(BuildContext context) {
+    Usuario.clear();
     Navigator.pop(context);
     push(context, LoginPage(), replace: true);
   }
