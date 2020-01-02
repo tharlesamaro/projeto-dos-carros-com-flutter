@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage>
           controller: _tabController,
           tabs: [
             Tab(text: "Clássicos"),
-            Tab(text: "Espotivos"),
+            Tab(text: "Esportivos"),
             Tab(text: "Luxo"),
           ],
         ),
