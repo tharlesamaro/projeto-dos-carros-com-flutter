@@ -19,7 +19,6 @@ class _HomePageState extends State<HomePage>
     super.initState();
 
     _initTabs();
-
   }
 
   Future _initTabs() async {
@@ -28,8 +27,6 @@ class _HomePageState extends State<HomePage>
     _tabController.index = await Prefs.getInt("tabIdx");
 
     _tabController.addListener(() {
-      print("Tab ${_tabController.index}");
-
       Prefs.setInt("tabIdx", _tabController.index);
     });
   }
